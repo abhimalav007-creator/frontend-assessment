@@ -6,10 +6,10 @@ interface Model {
 interface ModelSelectorProps {
   value: string;
   onChange: (val: string) => void;
-  options: Model[]; // <- add this
+  options?: Model[]; // make optional
 }
 
-export default function ModelSelector({ value, onChange, options }: ModelSelectorProps) {
+export default function ModelSelector({ value, onChange, options = [] }: ModelSelectorProps) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="model" className="text-sm font-medium text-gray-700 dark:text-gray-200">

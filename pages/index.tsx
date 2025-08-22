@@ -6,17 +6,17 @@ import ParameterSlider from '@/components/ParameterSlider';
 import PromptEditor from '@/components/PromptEditor';
 import Button from '@/components/Button';
 
-export default function Home(){
+export default function Home() {
   const [model, setModel] = useState('gpt-3.5');
   const [temperature, setTemperature] = useState(0.7);
   const [maxTokens, setMaxTokens] = useState(256);
   const [messages, setMessages] = useState<{role:'user'|'assistant'; text:string}[]>([]);
 
-  const params = useMemo(()=>({ model, temperature, maxTokens }), [model, temperature, maxTokens]);
+  const params = useMemo(() => ({ model, temperature, maxTokens }), [model, temperature, maxTokens]);
 
   const onSend = (prompt: string) => {
-    if(!prompt.trim()) return;
-    const fakeResponse = `Response from ${params.model} (temp ${params.temperature}, max ${params.maxTokens})\n\nThis is a dummy AI response for: \n"${prompt}"`;
+    if (!prompt.trim()) return;
+    const fakeResponse = `Response from ${params.model} (temp ${params.temperature}, max ${params.maxTokens})\n\nThis is a dummy AI response for:\n"${prompt}"`;
     setMessages(m => [...m, { role:'user', text: prompt }, { role:'assistant', text: fakeResponse }]);
   };
 
@@ -28,11 +28,11 @@ export default function Home(){
 
   const downloadJSON = () => {
     const data = { params, messages };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'session.json';
+    a.download = "session.json";
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -66,7 +66,7 @@ export default function Home(){
             {messages.length === 0 && (
               <p className="text-sm text-gray-500">Your conversation will appear here…</p>
             )}
-            {messages.map((m,i)=>(<ChatBubble key={i} role={m.role} text={m.text} />))}
+            {messages.map((m,i) => <ChatBubble key={i} role={m.role} text={m.text} />)}
           </section>
         </main>
       </div>
