@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI Interface Prototype
 
 A frontend-only AI interface prototype built as part of the **Frontend & UI/UX Designer Assessment**.  
@@ -102,3 +103,7 @@ git clone <repo-url>
 cd ai-interface
 npm install
 npm run dev
+=======
+# frontend-assessment
+Frontend assessment project built with Next.js, TypeScript, and Tailwind CSS. Includes mock API, model selector, chat UI, and theme toggle.
+>>>>>>> origin/main
